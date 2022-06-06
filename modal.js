@@ -19,7 +19,7 @@ class Modal extends HTMLElement {
 
                 #modal {
                     position: fixed;
-                    top: 15vh;
+                    top: 10vh;
                     left: 25%;
                     width: 50%; 
                     z-index: 100;
@@ -31,6 +31,7 @@ class Modal extends HTMLElement {
                     justify-content: space-between;
                     opacity: 0;
                     pointer-events: none;
+                    transition: all 0.3s ease-out;
                 }
 
                 :host([opened]) #backdrop,
@@ -39,12 +40,18 @@ class Modal extends HTMLElement {
                     pointer-events: all
                 }
 
+                :host([opened]) #modal {
+                    top: 15vh;
+                }
+
                 header {
                     padding: 1rem;
+                    border-bottom: 1px solid #ccc;
                 }
 
                 ::slotted(h1){
                     font-size: 1.25rem;
+                    margin: 0;
                 }
 
                 #main {
@@ -79,10 +86,11 @@ class Modal extends HTMLElement {
 
         const slots = this.shadowRoot.querySelectorAll('slot');
         // We can add event listeners for the event 'slotchange' on any of the slots
-
+        const backdrop = this.shadowRoot.querySelector('#backdrop');
         const cancelButton = this.shadowRoot.querySelector('#cancel');
         const confirmButton = this.shadowRoot.querySelector('#confirm');
-
+         
+        backdrop.addEventListener('click', this._cancel.bind(this));
         cancelButton.addEventListener('click', this._cancel.bind(this));
         confirmButton.addEventListener('click', this._confirm.bind(this));
     }
