@@ -32,6 +32,12 @@ class Modal extends HTMLElement {
                     pointer-events: none;
                 }
 
+                :host([opened]) #backdrop,
+                :host([opened]) #modal{
+                    opacity: 1;
+                    pointer-events: all
+                }
+
                 header {
                     padding: 1rem;
                 }
@@ -70,6 +76,7 @@ class Modal extends HTMLElement {
             </div>
         `;
     }
+
 }
 
 customElements.define('vax-modal', Modal);
