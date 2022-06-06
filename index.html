@@ -22,5 +22,14 @@
         <p>Bloody Damn!! Give us !!</p>
     </vax-modal>
     <p>Hello There</p>
+    <button>Confirm</button>
+    <script>
+        const confirmButton = document.querySelector('button');
+        const modal = document.querySelector('vax-modal');
+
+        confirmButton.addEventListener('click', ()=> {
+            modal.setAttribute('opened', '');
+        })
+    </script>
 </body>
 </html>
