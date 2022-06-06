@@ -27,6 +27,14 @@
     <script>
         const confirmButton = document.querySelector('button');
         const modal = document.querySelector('vax-modal');
+
+        modal.addEventListener('cancel', () => {
+            console.log('cancelled')
+        });
+
+        modal.addEventListener('confirm', () => {
+
+        });
       
         confirmButton.addEventListener('click', () => {
             if(!modal.isOpen){
