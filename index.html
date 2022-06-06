@@ -28,7 +28,9 @@
         const modal = document.querySelector('vax-modal');
       
         confirmButton.addEventListener('click', () => {
-            modal.setAttribute('opened', '');
+            if(!modal.isOpen){
+                modal.open();
+            }
         });
     </script>
 </body>
